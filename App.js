@@ -1,20 +1,44 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [buttonPressed, 
+setButtonPressed] = useState(false);
+    const handleButtonPress = () => {
+      setButtonPressed(true);
+      Alert.alert('Success!', 'You have successfully pressed the button.');
+    };
+
+    return (
+      <View style = {styles.container}>
+        <TouchableOpacity
+          style = {styles.button}
+          onPress={handleButtonPress}
+        >
+          <Text
+style = {styles.buttonText}> You can press here</Text>
+        </TouchableOpacity>
+      </View>
+    );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: 'black',
+    padding: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
