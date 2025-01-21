@@ -10,18 +10,7 @@ setButtonPressed] = useState(false);
       Alert.alert('Success!', 'You have successfully pressed the button.');
     };
 
-    return (
-      <View style = {styles.container}>
-        <TouchableOpacity
-          style = {styles.button}
-          onPress={handleButtonPress}
-        >
-          <Text
-style = {styles.buttonText}> You can press here</Text>
-        </TouchableOpacity>
-      </View>
-    );
-}
+ 
 
 
 
