@@ -1,14 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
 
-export default function App() {
-  const [buttonPressed, 
-setButtonPressed] = useState(false);
-    const handleButtonPress = () => {
-      setButtonPressed(true);
-      Alert.alert('Success!', 'You have successfully pressed the button.');
-    };
+const NumberAdder = () => {
+  const [numbers, setNumbers] = useState(Array(6).fill(''));
+
+  const handleNumberChange = (index, value) => {
+    const newNumbers = [...numbers];
+    newNumbers[index] = value;
+    setNumbers(newNumbers);
+  };
+
+  const handleAddition = () => {
+    const sum = numbers.reduce((acc, curr) => acc + (Number(curr) || 0), 0);
+    alert('The sum is: ${sum}');
+  };
+
+  return (
+    <div className='p-6 space-y-4'>
+      
+    </div>
+  )
+}
 
  
 
