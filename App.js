@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
 
 const NumberAdder = () => {
   const [numbers, setNumbers] = useState(Array(6).fill(''));
@@ -17,29 +16,33 @@ const NumberAdder = () => {
 
   return (
     <div className='p-6 space-y-4'>
-      
+      <div className='grid grid-cols-2 gap-4 md: grid-cols-3'>
+        {numbers.map((number, index) => (
+          <input
+            key={index}
+            type='number'
+            value={number}
+            onChange={(e) => handleNumberChange(index, e.target.value)}
+            placeholder={'Number ${index + 1}'}
+            className='p-2 border rounded'
+          />
+        ))}
     </div>
-  )
-}
+    <button
+      onClick={handleAddition}
+      className='px-4 py-2 bg-red-500 text-black font-medium rounded hover: bg-red-600'
+    >
+      Add Numbers
+    </button>
+  </div>
+  );
+};
+
+export default NumberAdder;
+
 
  
 
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    backgroundColor: 'black',
-    padding: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-});
+
