@@ -39,7 +39,6 @@ const NumberAdder = () => {
 };
 
 export default NumberAdder;
-this is an intentional bug
 
  
 
