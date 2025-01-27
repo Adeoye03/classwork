@@ -1,48 +1,98 @@
-import React, {useState} from 'react';
+import * as React from 'react';
+import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
 
-const NumberAdder = () => {
-  const [numbers, setNumbers] = useState(Array(6).fill(''));
+export default function App() {
+  const [num1, setNum1] = React.useState('');
+  const [num2, setNum2] = React.useState('');
+  const [num3, setNum3] = React.useState('');
+  const [num4, setNum4] = React.useState('');
+  const [num5, setNum5] = React.useState('');
+  const [num6, setNum6] = React.useState('');
 
-  const handleNumberChange = (index, value) => {
-    const newNumbers = [...numbers];
-    newNumbers[index] = value;
-    setNumbers(newNumbers);
-  };
-
-  const handleAddition = () => {
-    const sum = numbers.reduce((acc, curr) => acc + (Number(curr) || 0), 0);
-    alert('The sum is: ${sum}');
+  const handleAdd = () => {
+    const sum =
+      parseInt(num1) +
+      parseInt(num2) +
+      parseInt(num3) +
+      parseInt(num4) +
+      parseInt(num5) +
+      parseInt(num6);
+    Alert.alert('Result', `The sum of the numbers is: ${sum}`);
   };
 
   return (
-    <div className='p-6 space-y-4'>
-      <div className='grid grid-cols-2 gap-4 md: grid-cols-3'>
-        {numbers.map((number, index) => (
-          <input
-            key={index}
-            type='number'
-            value={number}
-            onChange={(e) => handleNumberChange(index, e.target.value)}
-            placeholder={'Number ${index + 1}'}
-            className='p-2 border rounded'
-          />
-        ))}
-    </div>
-    <button
-      onClick={handleAddition}
-      className='px-4 py-2 bg-red-500 text-black font-medium rounded hover: bg-red-600'
-    >
-      Add Numbers
-    </button>
-  </div>
+    <View style={styles.container}>
+      <Text style={styles.title}>Add 6 Numbers</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter number 1"
+        keyboardType="numeric"
+        onChangeText={(text) => setNum1(text)}
+        value={num1}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Enter number 2"
+        keyboardType="numeric"
+        onChangeText={(text) => setNum2(text)}
+        value={num2}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Enter number 3"
+        keyboardType="numeric"
+        onChangeText={(text) => setNum3(text)}
+        value={num3}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Enter number 4"
+        keyboardType="numeric"
+        onChangeText={(text) => setNum4(text)}
+        value={num4}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Enter number 5"
+        keyboardType="numeric"
+        onChangeText={(text) => setNum5(text)}
+        value={num5}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Enter number 6"
+        keyboardType="numeric"
+        onChangeText={(text) => setNum6(text)}
+        value={num6}
+      />
+      <Button
+        title="Add"
+        onPress={handleAdd}
+        color="red"
+      />
+    </View>
   );
-};
+}
 
-export default NumberAdder;
-
-
- 
-
-
-
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 20,
+  },
+  input: {
+    width: '80%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    padding: 10,
+  },
+  button: {
+    color: 'black', 
+  },
+});
